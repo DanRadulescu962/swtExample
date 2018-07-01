@@ -14,6 +14,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
@@ -93,7 +94,19 @@ public class SimpleShell {
 			}
 
 		});
-
+		
+		Button okB = new Button(shell, SWT.PUSH);
+		okB.setText("OK!");
+		okB.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				super.widgetSelected(e);
+				MessageBox m = new MessageBox(shell, SWT.ICON_QUESTION | SWT.OK| SWT.CANCEL);
+				m.setText("new dialog");
+				m.setMessage("Pressed OK");
+				m.open();
+			}
+		});
 		shell.pack();
 		shell.open();
 
